@@ -1,0 +1,156 @@
+﻿@model Mauka.Entities.User
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<style>
+    /* Hide the default file input appearance */
+    #imageUpload {
+        display: none;
+    }
+
+    /* Style the custom file input button */
+    .custom-file-input {
+        display: inline-block;
+        background-color: #e9ecef;
+        color: #495057;
+        padding: 0.375rem 0.75rem;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        cursor: pointer;
+    }
+
+    /* Style the label text */
+    .custom-file-input-label {
+        display: inline-block;
+        margin-bottom: 0;
+        font-weight: normal;
+        text-align: center;
+    }
+    #saveButton {
+        border: none;
+        
+    }
+
+        #saveButton:hover {
+            background-color: #FFA500; /* Hover background color */
+        }
+</style>
+
+<!-- ad-single start here -->
+<div class="commontop">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="dashboard">
+                    <div class="profile">
+                        <div class="col-sm-3 col-xs-12">
+                            <div class="profile-view">
+                                
+                                <form method="post">
+                                    <div class="profile-image-container">
+                                        <img id="categoryImage" src="@(string.IsNullOrEmpty(Model.ImageURL) ? Url.Content("~/Content/images/dashboard/dp.png") : Model.ImageURL)" alt="Image" height="140px" width="160px" style="border-radius: 50%" />
+
+                                    </div>
+                                    <input id="ImageURL" name="ImageURL" type="hidden" />
+                                    <input id="imageUpload" name="Image" type="file" accept=".png, .jpg" />
+                                    <label for="imageUpload" class="custom-file-input-label">Upload Image</label>
+                                    <button id="saveButton" type="submit" style="display: none;">Save</button>
+                                </form>
+
+
+                                
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-9 col-xs-12 padd0">
+                            <h4>@Model.Name</h4>
+                            <div class="common">
+                                <p class="des"><i class="la la-map-marker"></i> @Model.City</p>
+                                <p class="des1" id="createTime">Create Account: @Model.CreateTime</p>
+
+                            </div>
+                            <ul class="list-inline">
+                                <li><a href="@Url.Action("Dashboard", "user")"><img src="~/Content/images/dashboard/grid.png" alt="image" title="image" /><p>Dashboard</p></a></li>
+                                <li><a href="@Url.Action("MyProducts", "Product", new {Model.ID})"><img src="~/Content/images/dashboard/card.png" alt="image" title="image" /><p>My Ads</p></a></li>
+                                
+                                <li><a href="dashboard_message.html"><img src="~/Content/images/dashboard/message.png" alt="image" title="image" /><p>Messages</p></a></li>
+                                <li><a href="@Url.Action("UserSetting", "User", new {Model.ID})"><img src="~/Content/images/dashboard/setting.png" alt="image" title="image" /><p>Setting</p></a></li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ad-single end here -->
+
+<script>
+
+    // Get the element with id "createTime"
+    var createTimeElement = document.getElementById("createTime");
+
+    // Get the create time value
+    var createTime = createTimeElement.textContent;
+
+    // Parse the create time string to a Date object
+    var createDate = new Date(createTime);
+
+    // Get the current time
+    var currentTime = new Date();
+
+    // Calculate the time difference in milliseconds
+    var timeDiff = currentTime - createDate;
+
+    // Convert the time difference to seconds, minutes, hours, and days
+    var seconds = Math.floor(timeDiff / 1000);
+    var minutes = Math.floor(seconds / 60);
+    var hours = Math.floor(minutes / 60);
+    var days = Math.floor(hours / 24);
+
+    // Format the time difference string
+    var timeDiffString = days + " days, " + hours % 24 + " hours, " + minutes % 60 + " minutes";
+
+    // Update the create time element with the calculated time difference
+    createTimeElement.textContent = "Account Create: " + timeDiffString;
+
+
+    $("#imageUpload").change(function () {
+        var element = this;
+        var formData = new FormData();
+        var totalFiles = element.files.length;
+
+        for (var i = 0; i < totalFiles; i++) {
+            var file = element.files[i];
+            formData.append("Photo", file);
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: '/Shared/UploadImage',
+            dataType: 'json',
+            data: formData,
+            contentType: false,
+            processData: false
+        })
+            .done(function (response) {
+                console.log(response);
+
+                if (response.Success) {
+                    $("#ImageURL").val(response.ImageURL);
+                    $("#categoryImage").attr("src", response.ImageURL);
+                    $("#saveButton").show(); // Show the Save button
+                }
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("FAIL");
+            });
+    });
+
+</script>

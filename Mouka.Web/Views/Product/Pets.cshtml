@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Pets";
+}
+
+<!-- breadcrumb end here -->
+<div class="bread-crumb">
+    <div class="bread-crumb">
+        <div class="container">
+            <div class="matter">
+                <div class="pull-left">
+                    <ul class="list-inline">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="vehicle_category.html">Vehicle Category</a></li>
+                    </ul>
+                </div>
+                <div class="pull-right">
+                    <h2>Vehicle Category</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb end here -->
+<!-- content start here -->
+<div class="maincategory">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                <div class="left">
+                    <div class="category">
+                        <h1>Categories</h1>
+                        <ul class="list-unstyled">
+                            <li><a href="@Url.Action("Vehicle", "Product", new { id = 1 })"><img src="~/Content/images/blog/motorcycle.png" class="img-fluid" alt="image" title="image"> Vehicle</a></li>
+                            <li><a href="@Url.Action("Mobiles", "Product", new { id = 2 })"><img src="~/Content/images/blog/tablet.png" class="img-fluid" alt="image" title="image"> Mobiles</a></li>
+                            <li><a href="@Url.Action("Electonics", "Product", new { id = 3 })"><img src="~/Content/images/blog/globe-bulb.png" class="img-fluid" alt="image" title="image"> Electonics</a></li>
+                            <li><a href="@Url.Action("RealEstate", "Product", new { id = 4 })"><img src="~/Content/images/blog/building.png" class="img-fluid" alt="image" title="image"> Real Estate</a></li>
+                            <li><a href="@Url.Action("Fashion", "Product", new { id = 5 })"><img src="~/Content/images/blog/trainer.png" class="img-fluid" alt="image" title="image"> Fashion</a></li>
+                            <li><a href="@Url.Action("Furniture", "Product", new { id = 6 })"><img src="~/Content/images/blog/chair.png" class="img-fluid" alt="image" title="image"> Furniture</a></li>
+                            <li><a href="@Url.Action("Jobs", "Product", new { id = 7 })"><img src="~/Content/images/blog/briefcase.png" class="img-fluid" alt="image" title="image"> Jobs</a></li>
+                            <li><a href="@Url.Action("Services", "Product", new { id = 8 })"><img src="~/Content/images/blog/maintenance.png" class="img-fluid" alt="image" title="image"> Services</a></li>
+                            <li><a href="@Url.Action("Pets", "Product", new { id = 9 })"><img src="~/Content/images/blog/dog.png" class="img-fluid" alt="image" title="image"> Pets</a></li>
+                            <li><a href="@Url.Action("Education", "Product", new { id = 10 })"><img src="~/Content/images/blog/books.png" class="img-fluid" alt="image" title="image"> Education</a></li>
+                            <li><a href="@Url.Action("Matrimony", "Product", new { id = 11 })"><img src="~/Content/images/blog/man-woman.png" class="img-fluid" alt="image" title="image"> Matrimony</a></li>
+                            <li><a href="@Url.Action("NotesAndCoins", "Product", new { id = 12 })"><img src="~/Content/images/blog/paper-money.png" class="img-fluid" alt="image" title="image"> Notes and Coins</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-10 col-sm-9 col-md-9 padd0 col-xs-12 catebox">
+                <div class="row">
+                    @foreach (var product in Model)
+                    {
+                        <div class="product-layout product-grid col-lg-3 col-md-4 col-sm-6 col-xs-12 cols">
+                            <div class="product-thumb">
+                                <div class="image">
+                                    <a href="@Url.Action("SingleProduct", "Product", new { product.ID })">
+                                        <img src="@Url.Content(product.ImageURL)" alt="image" title="image" class="img-fluid">
+                                    </a>
+                                    <div class="onhover"> ৳‎@product.Price.ToString("N2")</div>
+
+                                </div>
+                                <div class="caption">
+                                    <h4><a href="ads_single_view.html">@product.Name</a></h4>
+                                    <p class="des">Category : Pets</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="la la-map-marker"></i> @product.City</li>
+
+                                        <li><i class="la la-clock-o"></i> @product.postTime.ToString("MM/dd/yyyy HH:mm")</li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="text-center icon">
+                    <i class="la la-spinner fa-spin"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content end here -->

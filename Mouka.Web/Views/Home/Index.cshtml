@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@if (TempData["LoginSuccess"] != null && (bool)TempData["LoginSuccess"])
+{
+    <script>
+        alert("Login successful!");
+    </script>
+}
+
+
+<main>
+    <!-- slider start here -->
+    <div class="slideshow owl-carousel" style=" height:470px ">
+        <div class="item">
+            <img style="height: 400px; width: 1110px; margin-left: 180px; margin-top: 34px" src="~/Content/images/Banner8.jpg" alt="banner" title="banner" class="img-fluid sliderchange" />
+        </div>
+        <div class="item">
+            <img style="height: 400px; width: 1110px; margin-left: 180px; margin-top: 34px" src="~/Content/images/Banner2.jpg" alt="banner" title="banner" class="img-fluid sliderchange" />
+        </div>
+        <div class="item">
+            <img style="height: 400px; width: 1110px; margin-left: 180px; margin-top: 34px" src="~/Content/images/Banner3.jpg" alt="banner" title="banner" class="img-fluid sliderchange" />
+        </div>
+        <div class="item">
+            <img style="height: 400px; width: 1110px; margin-left: 180px; margin-top: 34px" src="~/Content/images/Banner4.jpg" alt="banner" title="banner" class="img-fluid sliderchange" />
+        </div>
+        <div class="item">
+            <img style="height: 400px; width: 1110px; margin-left: 180px; margin-top: 34px" src="~/Content/images/Banner5.jpg" alt="banner" title="banner" class="img-fluid sliderchange" />
+        </div>
+        <div class="item">
+            <img style="height: 400px; width: 1110px; margin-left: 180px; margin-top: 34px" src="~/Content/images/Banner6.jpg" alt="banner" title="banner" class="img-fluid sliderchange" />
+        </div>
+    </div>
+    <!-- slider end here -->
+    <!-- browse start here -->
+    <div class="browse">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>Browse Category</h2>
+                    <hr />
+                    <ul class="list-inline">
+                        <li><a href="@Url.Action("Vehicle", "Product", new { id = 1 })"><img src="~/Content/images/icon1.png" alt="icon" title="icon" class="img-fluid" /><p>Vehicles</p></a></li>
+                        <li><a href="@Url.Action("Mobiles", "Product", new { id = 2 })"><img src="~/Content/images/icon2.png" alt="icon" title="icon" class="img-fluid" /><p>Mobiles</p></a></li>
+                        <li><a href="@Url.Action("Electonics", "Product", new { id = 3 })"><img src="~/Content/images/icon3.png" alt="icon" title="icon" class="img-fluid" /><p>Electonics</p></a></li>
+                        <li><a href="@Url.Action("RealEstate", "Product", new { id = 4 })"><img src="~/Content/images/icon4.png" alt="icon" title="icon" class="img-fluid" /><p>Real Estate</p></a></li>
+                        <li><a href="@Url.Action("Fashion", "Product", new { id = 5 })"><img src="~/Content/images/icon5.png" alt="icon" title="icon" class="img-fluid" /><p>Fashion</p></a></li>
+                        <li><a href="@Url.Action("Furniture", "Product", new { id = 6 })"><img src="~/Content/images/icon6.png" alt="icon" title="icon" class="img-fluid" /><p>Furniture</p></a></li>
+                        <li><a href="@Url.Action("Jobs", "Product", new { id = 7 })"><img src="~/Content/images/icon7.png" alt="icon" title="icon" class="img-fluid" /><p>Jobs</p></a></li>
+                        <li><a href="@Url.Action("Services", "Product", new { id = 8 })"><img src="~/Content/images/icon8.png" alt="icon" title="icon" class="img-fluid" /><p>Services</p></a></li>
+                        <li><a href="@Url.Action("Pets", "Product", new { id = 9 })"><img src="~/Content/images/icon9.png" alt="icon" title="icon" class="img-fluid" /><p>Pets</p></a></li>
+                        <li><a href="@Url.Action("Education", "Product", new { id = 10 })"><img src="~/Content/images/icon10.png" alt="icon" title="icon" class="img-fluid" /><p>Education</p></a></li>
+                        <li><a href="@Url.Action("Matrimony", "Product", new { id = 11 })"><img src="~/Content/images/icon11.png" alt="icon" title="icon" class="img-fluid" /><p>Matrimony</p></a></li>
+                        <li><a href="@Url.Action("NotesAndCoins", "Product", new { id = 12 })"><img src="~/Content/images/icon12.png" alt="icon" title="icon" class="img-fluid" /><p>Notes and Coins</p></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- browse end here -->
+    <!-- banner start here -->
+    <div class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <img src="~/Content/images/ads.jpg" class="img-fluid bannerchange" alt="image" title="title" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner end here -->
+</main>

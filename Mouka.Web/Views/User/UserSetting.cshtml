@@ -1,0 +1,204 @@
+﻿@model Mouka.Web.Models.SettingModel
+@{
+    ViewBag.Title = "UserSetting";
+}
+
+<!-- ad-single start here -->
+<div class="commontop">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="dashboard">
+                    <div class="profile">
+                        <div class="col-sm-3 col-xs-12">
+                            <img id="categoryImage" src="@(string.IsNullOrEmpty(Model.ImageURL) ? Url.Content("~/Content/images/dashboard/dp.png") : Model.ImageURL)" alt="Image" style="border-radius: 50% ;height:140px;  width:160px "  />
+                        </div>
+                        <div class="col-sm-9 col-xs-12 padd0">
+                            <h4>@Model.Name</h4>
+                            <div class="common">
+                                <p class="des"><i class="la la-map-marker"></i> @Model.City</p>
+                                <p class="des1">Create Account : 2 Years ago</p>
+                            </div>
+                            <ul class="list-inline">
+                                <li><a href="@Url.Action("Dashboard", "User")"><img src="~/Content/images/dashboard/grid.png" alt="image" title="image" /><p>Dashboard</p></a></li>
+                                <li><a href="@Url.Action("MyProducts", "Product", new {Model.ID})"><img src="~/Content/images/dashboard/card.png" alt="image" title="image" /><p>My Ads</p></a></li>
+                                
+                                <li><a href="dashboard_message.html"><img src="~/Content/images/dashboard/message.png" alt="image" title="image" /><p>Messages</p></a></li>
+                                <li class="active"><a href=""><img src="~/Content/images/dashboard/setting.png" alt="image" title="image" /><p>Setting</p></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="inner-setting">
+                        @using (Html.BeginForm("UserSetting", "User", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default active">
+                                    <div class="panel-heading">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                                            <h4 class="panel-title">Contact Details  <i class="fa fa-angle-right" aria-hidden="true"></i></h4>
+                                        </a>
+                                    </div>
+                                    <div id="collapse1" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-4"></div>
+                                                <div class="col-sm-4">
+                                                    <form class="form-horizontal" method="post">
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                @Html.LabelFor(m => m.Name)
+                                                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                                                                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                @Html.LabelFor(m => m.City)
+                                                                @Html.DropDownListFor(m => m.City, new SelectList(new[] { "Dhaka", "Khulna", "Barishal", "Chattogram", "Sylhet", "Rajshahi", "Cumilla", "Rangpur" }), "Select City", new { @class = "form-control" })
+                                                                @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="buttons">
+                                                            <input class="btn btn-primary" value="Save" type="submit">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="col-sm-4"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                                            <h4 class="panel-title"> Phone Number <i class="fa fa-angle-right" aria-hidden="true"></i></h4>
+                                        </a>
+                                    </div>
+                                    <div id="collapse2" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-4"></div>
+                                                <div class="col-sm-4">
+                                                    <form class="form-horizontal" method="post">
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                @Html.LabelFor(m => m.PhoneNumber)
+                                                                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                                                                @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="buttons">
+                                                            <input class="btn btn-primary" value="Save" type="submit">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="col-sm-4"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                                            <h4 class="panel-title">
+                                                Change Password <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                            </h4>
+                                        </a>
+                                    </div>
+                                    <div id="collapse3" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-4"></div>
+                                                <div class="col-sm-4">
+                                                    <form class="form-horizontal" method="post">
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                @Html.LabelFor(m => m.OldPassword)
+                                                                @Html.PasswordFor(m => m.OldPassword, new { @class = "form-control" })
+                                                                @Html.ValidationMessageFor(m => m.OldPassword, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                @Html.LabelFor(m => m.NewPassword)
+                                                                @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control" })
+                                                                @Html.ValidationMessageFor(m => m.NewPassword, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                @Html.LabelFor(m => m.RepeatPassword)
+                                                                @Html.PasswordFor(m => m.RepeatPassword, new { @class = "form-control" })
+                                                                @Html.ValidationMessageFor(m => m.RepeatPassword, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="buttons">
+                                                            <input class="btn btn-primary" value="Save" type="submit">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="col-sm-4"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4"><h4 class="panel-title"> Change Email <i class="fa fa-angle-right" aria-hidden="true"></i></h4></a>
+                                    </div>
+                                    <div id="collapse4" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-4"></div>
+                                                <div class="col-sm-4">
+                                                    <form class="form-horizontal" method="post">
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12">
+                                                                @Html.LabelFor(m => m.Email)
+                                                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="buttons">
+                                                            <input class="btn btn-primary" value="Save" type="submit">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="col-sm-4"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
+                                            <h4 class="panel-title">
+                                                Delete Account <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                            </h4>
+                                        </a>
+                                    </div>
+                                    <div id="collapse6" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <form class="form-horizontal" method="post">
+                                                <div class="buttons text-center">
+                                                    <input class="btn btn-primary" value="Delete Account" type="submit">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ad-single end here -->

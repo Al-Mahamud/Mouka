@@ -1,0 +1,274 @@
+﻿@model Mouka.Web.Models.UserAndProduct
+@{
+    ViewBag.Title = "SingleProduct";
+}
+
+<style>
+    #submitReport:hover {
+        background-color: #FB8A2E;
+    }
+    .safety a i.fa.fa-minus-circle {
+        color: red;
+    }
+</style>
+
+<!-- breadcrumb end here -->
+<div class="bread-crumb">
+    <div class="container">
+        <div class="matter">
+            <div class="pull-left">
+                <ul class="list-inline">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mobile_category.html">Mobiles</a></li>
+                    <li><a href="ads_single_view.html">@Model.ProductName</a></li>
+                </ul>
+            </div>
+            <div class="pull-right">
+                <h2>Mobiles</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb end here -->
+<!-- ad-single start here -->
+<div class="commontop">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-xs-12">
+                <h2 class="title-singleads">Consultant  services </h2>
+                <div class="tabheading">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="row">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation"><a class="active" href="#photos" aria-controls="home" role="tab" data-toggle="tab">Photos</a></li>
+                                <li role="presentation"><a class="" href="#adsmap" aria-controls="profile" role="tab" data-toggle="tab">Map</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="row pull-right">
+                            <div class="time-location hidden-xs">
+                                <i class="la la-clock-o"></i> @Model.ProductTime
+                            </div>
+                            <div class="advertise-id">
+                                AD ID : #237
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active show margin-map" id="photos">
+                        <div id="ad-singlephotos">
+                            <img src="@Url.Content(Model.ProductURL)" alt="image" title="image" class="img-fluid" />
+
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane margin-map" id="adsmap">
+                        <div class="map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14728.514695141646!2d90.4125181761391!3d23.810331161755525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c4269b6f204f%3A0x50213cc59b2aa64c!2sDhaka%2C%20Bangladesh!5e0!3m2!1sen!2sbd!4v1625115266869" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="details-single">
+                    <div class="title-detail">Additional Details						</div>
+                    <ul class="clearfix">
+                        <li><div class="listing-details"><span class="label">AD ID</span><span class="desc"> : #237</span></div></li>
+                        <li><div class="listing-details"><span class="label">Posted On</span><span class="desc"><i class="la la-clock-o"></i> @Model.ProductTime</span></div></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                    <div class="title-detail">Description</div>
+                    <p>@Model.ProductDescription<br></p>
+                    <div class="clearfix"></div>
+                    <div class="title-detail">Location</div>
+                    <ul class="clearfix location-list">
+                        <li><div class="listing-details"><span class="label">City</span><span class="desc"> : @Model.ProductLocation</span></div></li>
+                        <li><div class="listing-details"><span class="label">Country</span><span class="desc">: Bangladesh</span></div></li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                    <div class="title-detail">Video</div>
+                    <ul class="clearfix location-list">
+                        <iframe width="100%" height="400px" src="https://www.youtube.com/embed/hiiX59fVEEM" frameborder="0" allowfullscreen=""></iframe>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+                <div class="rightside">
+                    <p class="price"> ৳‎@Model.ProductPrice</p>
+                    <div class="profile text-center">
+                        <div class="image">
+                            <img src="@Url.Content(Model.UserURL)" class="img-fluid" alt="image" title="image" />
+
+                        </div>
+                        <h4>@Model.UserName</h4>
+                        <p>Create Account</p>
+                        <span id="createTime">Create Account: @Model.UserTime</span>
+                    </div>
+
+                    <div class="phone">
+                        <i class="la la-phone"></i>@Model.PhoneNumber
+                    </div>
+                    <div class="safety">
+                        <h3>Safety Tips for Buyers</h3>
+                        <p>01. Meet in a safe & public place</p>
+                        <p>02. Don’t pay in advance</p>
+                        <p>03. Exchange item and payment at the same time</p>
+                        <p>04. Use common sense</p>
+                        <div class="text-center">
+                            <a href="#">More Tips<i class="la la-angle-double-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="safety">
+                        <a href="#" id="reportLink"><i class="fa fa-minus-circle"></i> Report</a>
+                    </div>
+
+                    <div id="reportContainer"  style="display: none;">
+                        <textarea class="form-control" id="reportText" rows="4" cols="50" placeholder="Enter your report"></textarea>
+                        <button id="submitReport" class="btn" >Submit</button>
+                    </div>
+
+
+
+
+                    <!-- AddThis Button BEGIN -->
+                    <div class="addthis_toolbox addthis_default_style" data-url=""><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_pinterest_pinit"></a> <a class="addthis_counter addthis_pill_style"></a></div>
+                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script>
+                    <!-- AddThis Button END -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ad-single end here -->
+
+<script>
+
+    // Get the element with id "createTime"
+    var createTimeElement = document.getElementById("createTime");
+
+    // Get the create time value
+    var createTime = createTimeElement.textContent;
+
+    // Parse the create time string to a Date object
+    var createDate = new Date(createTime);
+
+    // Get the current time
+    var currentTime = new Date();
+
+    // Calculate the time difference in milliseconds
+    var timeDiff = currentTime - createDate;
+
+    // Convert the time difference to seconds, minutes, hours, and days
+    var seconds = Math.floor(timeDiff / 1000);
+    var minutes = Math.floor(seconds / 60);
+    var hours = Math.floor(minutes / 60);
+    var days = Math.floor(hours / 24);
+
+    // Format the time difference string
+    var timeDiffString = days + " days, " + hours % 24 + " hours, " + minutes % 60 + " minutes";
+
+    // Update the create time element with the calculated time difference
+    createTimeElement.textContent = "" + timeDiffString + " ago";
+
+
+
+    // Get the report link element
+var reportLink = document.getElementById("reportLink");
+
+// Get the report container element
+var reportContainer = document.getElementById("reportContainer");
+
+// Get the report text element
+var reportText = document.getElementById("reportText");
+
+// Get the submit report button element
+var submitReport = document.getElementById("submitReport");
+
+// Function to handle report link click event
+function reportLinkClickHandler(event) {
+  event.preventDefault(); // Prevent the default link behavior
+
+  // Show the report container
+  reportContainer.style.display = "block";
+}
+
+  // Function to handle submit report button click event
+  function submitReportClickHandler(event) {
+      event.preventDefault(); // Prevent the default button behavior
+      function clearCookie(name) {
+          document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      }
+
+      function logout() {
+          clearCookie("user");
+      }
+
+      function getCookie(name) {
+          const cookies = document.cookie.split("; ");
+          for (let i = 0; i < cookies.length; i++) {
+              const cookie = cookies[i].split("=");
+              if (cookie[0] === name) {
+                  return decodeURIComponent(cookie[1]);
+              }
+          }
+          return null;
+      }
+
+
+      const userCookie = getCookie("user");
+
+      if (userCookie) {
+          // Get the report text entered by the user
+          var report = reportText.value;
+
+          // Get the User ID from Razor model
+          var userId = '@Model.UserId';
+
+          // Perform further processing or submit the report as needed
+          // ...
+
+          // Example: Send the report and User ID via AJAX
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "/Report/SubmitReport", true);
+          xhr.setRequestHeader("Content-Type", "application/json");
+          xhr.onreadystatechange = function () {
+              if (xhr.readyState === 4) {
+                  if (xhr.status === 200) {
+                      // Report successfully submitted
+                      alert("Report submitted:\n" + report);
+                  } else {
+                      // Error occurred during report submission
+                      alert("Error submitting report. Please try again.");
+                  }
+              }
+          };
+          var data = JSON.stringify({ report: report, userId: userId });
+          xhr.send(data);
+
+          // Hide the report container
+          reportContainer.style.display = "none";
+
+          // Clear the report text
+          reportText.value = "";
+      }
+      else {
+          alert("Login First");
+          window.location.href = '@Url.Action("Login", "User")';
+      }
+}
+
+// Add event listener to the report link
+reportLink.addEventListener("click", reportLinkClickHandler);
+
+// Add event listener to the submit report button
+submitReport.addEventListener("click", submitReportClickHandler);
+
+
+
+
+</script>
+

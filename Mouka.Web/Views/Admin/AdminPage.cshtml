@@ -1,0 +1,133 @@
+﻿@model Mouka.Web.Models.Item
+<!-- Admin page content goes here -->
+
+@{
+    Layout = null;
+
+    ViewBag.Title = "AdminPage";
+}
+
+@if (TempData["LoginAsAdmin"] != null && (bool)TempData["LoginAsAdmin"])
+{
+    <script>
+        alert("Login as Admin!");
+    </script>
+}
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard</title>
+    <!-- Bootstrap stylesheet -->
+    <link href="bootstrap4/css/bootstrap.min.css" rel="stylesheet">
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900" rel="stylesheet">
+    <!-- stylesheet -->
+    <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/style_orange.css" title="style_orange" rel="alternate stylesheet" type="text/css" />
+    <link href="~/Content/css/style_blue.css" title="style_blue" rel="alternate stylesheet" type="text/css" />
+    <link href="~/Content/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/ele-style.css" rel="stylesheet" type="text/css" />
+    <!-- font-awesome -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- line-awesome -->
+    <link href="line-awesome/css/line-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- crousel css -->
+    <link href="js/owl-carousel/owl.carousel.min.css" rel="stylesheet" type="text/css" />
+    <!--bootstrap select-->
+    <link href="js/dist/css/bootstrap-select.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <!-- ad-single start here -->
+    <div class="commontop">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="dashboard">
+                        <div class="profile">
+
+                            <div class="col-sm-9 col-xs-12 padd0" style=" margin-left:40px">
+                                <h4>Al-Mahamud</h4>
+                                <div class="common">
+                                    <p class="des"><i class="la la-map-marker"></i> Kuet,Khulna,Bangladesh</p>
+
+                                </div>
+                                <ul class="list-inline" style="padding-left:0px">
+                                    <li><a href="@Url.Action("AdminPage", "Admin")"><img src="~/Content/images/dashboard/grid.png" alt="image" title="image" /><p>Dashboard</p></a></li>
+                                    <li>
+                                        <a href="@Url.Action("ViewUsers", "Admin")">
+                                            <img src="~/Content/images/dashboard/card.png" alt="image" title="image" />
+                                            <p>View Users</p>
+                                        </a>
+                                    </li>
+
+                                    <li><a href="@Url.Action("UserReport", "Admin")"><img src="~/Content/images/dashboard/message.png" alt="image" title="image" /><p>Reports</p></a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="browse">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12">
+
+
+                                        <ul class="list-inline">
+                                            <li><a href=""><img src="~/Content/images/icon1.png" alt="icon" title="icon" class="img-fluid" /><p>Vehicles <br /> @Model.Vehicle</p></a></li>
+                                            <li><a href=""><img src="~/Content/images/icon2.png" alt="icon" title="icon" class="img-fluid" /><p>Mobiles <br /> @Model.Mobiles</p></a></li>
+                                            <li><a href=""><img src="~/Content/images/icon3.png" alt="icon" title="icon" class="img-fluid" /><p>Electonics <br /> @Model.Electronics</p></a></li>
+                                            <li><a href=""><img src="~/Content/images/icon4.png" alt="icon" title="icon" class="img-fluid" /><p>Real Estate <br /> @Model.RealEstate</p></a></li>
+                                            <li><a href=""><img src="~/Content/images/icon5.png" alt="icon" title="icon" class="img-fluid" /><p>Fashion <br /> @Model.Fashion</p></a></li>
+                                            <li><a href=""><img src="~/Content/images/icon6.png" alt="icon" title="icon" class="img-fluid" /><p>Furniture <br /> @Model.Furniture</p></a></li>
+                                            <li><a href=""><img src="~/Content/images/icon7.png" alt="icon" title="icon" class="img-fluid" /><p>Jobs <br /> @Model.Jobs</p></a></li>
+                                            <li><a href=""><img src="~/Content/images/icon8.png" alt="icon" title="icon" class="img-fluid" /><p>Services <br /> @Model.Services</p></a></li>
+                                            <li><a href=""><img src="~/Content/images/icon9.png" alt="icon" title="icon" class="img-fluid" /><p>Pets <br /> @Model.Pets</p></a></li>
+                                            <li><a href=""><img src="~/Content/images/icon10.png" alt="icon" title="icon" class="img-fluid" /><p>Education <br /> @Model.Education</p></a></li>
+                                            <li><a href=""><img src="~/Content/images/icon11.png" alt="icon" title="icon" class="img-fluid" /><p>Matrimony <br /> @Model.Matrimony</p></a></li>
+                                            <li><a href=""><img src="~/Content/images/icon12.png" alt="icon" title="icon" class="img-fluid" /><p>Notes and Coins <br /> @Model.NotesAndCoins</p></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ad-single end here -->
+    <!-- footer start here -->
+    <!-- footer end here -->
+    <!-- jquery -->
+    <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <!-- bootstrap js -->
+    <script src="js/popper.min.js" type="text/javascript"></script>
+    <script src="bootstrap4/js/bootstrap.min.js" type="text/javascript"></script>
+    <!--bootstrap select-->
+    <script src="js/dist/js/bootstrap-select.js"></script>
+    <!-- owlcarousel js -->
+    <script src="js/holder.min.js" type="text/javascript"></script>
+    <script src="js/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+    <!--internal js-->
+    <script src="js/owlinternal.js"></script>
+    <script src="js/internal.js"></script>
+    <script src="js/preetycheble/prettyCheckable.min.js"></script>
+    <link rel="stylesheet" href="js/preetycheble/prettyCheckable.css" />
+    <script src="js/switcher.js"></script>
+</body>
+</html>
+
+
+
+

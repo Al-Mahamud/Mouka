@@ -1,0 +1,16 @@
+﻿@model Mauka.Entities.Category
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Cateroy</h2>
+
+<h1>Are you sure want to delete this Category</h1>
+
+<form method="post">
+    <input type="hidden" name="ID" value="@Model.ID" />
+    <button type="submit">yes Delete</button>
+</form>
+<a href="/Index">Cancle</a>
+
+

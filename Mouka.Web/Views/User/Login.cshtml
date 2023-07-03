@@ -1,0 +1,100 @@
+﻿@model Mouka.Web.Models.UserLoginModel
+@{
+    ViewBag.Title = "Login";
+}
+
+@if (TempData["RegistrationSuccess"] != null && (bool)TempData["RegistrationSuccess"])
+{
+    <script>
+        alert("Registration successful!");
+    </script>
+}
+
+@if (TempData["Resetpassword"] != null && (bool)TempData["Resetpassword"])
+{
+    <script>
+        alert("Reset Password successfull!");
+    </script>
+}
+
+
+
+
+<!-- breadcrumb end here -->
+<div class="bread-crumb">
+    <div class="container">
+        <div class="matter">
+            <div class="pull-left">
+                <ul class="list-inline">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+            <div class="pull-right">
+                <h2>Login</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb end here -->
+<!-- faq start here -->
+<div class="commontop">
+    <div class="container">
+        <div class="col-md-12 col-sm-12 col-xs-12 login padd0">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 bor">
+                    <a href=""><span class="logochange" style="color: #FFd44b; font-size: 40px;"><span style="color: black;">M</span>auka</span></a>
+                    <div class="donot">
+                        Don't have an account? <a href="@Url.Action("Resistration", "User")">Create your account</a>
+                    </div>
+                    <p>It takes less than a minute</p>
+                    <div class="or">
+                        <span>or</span>
+                        <hr />
+                    </div>
+                    <h2>Login Via Social Accounts</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="https://www.facebook.com/" target="_blank" class="fb"><i class="fa fa-facebook"></i> Login Via Facebook</a></li>
+                        <li><a href="https://twitter.com/" target="_blank" class="tw"><i class="fa fa-twitter"></i> Login Via Twitter</a></li>
+                        <li><a href="https://plus.google.com/" target="_blank" class="gp"><i class="fa fa-google-plus"></i> Login Via Google+</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <h1>Login</h1>
+
+                    @using (Html.BeginForm("Login", "User", FormMethod.Post, new { id = "login", enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            <i class="la la-envelope-o"></i>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email", id = "input-email" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <i class="la la-unlock"></i>
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password", id = "input-password" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="links">
+                            <i class="la la-check-circle"></i>Remember me
+                            <a href="@Url.Action("ForgetPassword", "User")" class="pull-right">Forgot Password?</a>
+                        </div>
+
+                        <div id="passwordAlert" class="alert alert-danger" style="display: none;">
+                            Passwords do not match.
+                        </div>
+
+                        <div id="errorMessage" class="alert alert-danger" style="display: none;"></div>
+
+                        <button id="loginBtn1" type="submit" class="btn btn-primary btn-block">Login Now</button>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- faq end here -->

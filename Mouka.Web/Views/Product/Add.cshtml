@@ -1,0 +1,219 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+
+<div class="commontop">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="add">
+                    <div class="addtop">
+                        <h3>Submit a Free Ad</h3>
+                    </div>
+                    <form id="addproduct" method="post" enctype="multipart/form-data" class="form-horizontal addform">
+
+                        <div class="form-group">
+                            <div class="col-sm-12 col-xs-12">
+                                <label>Select Category*</label>
+                                <ul class="nav nav-tabs list-inline" >
+                                    <li class="">
+                                        <a href="1" data-toggle="tab" aria-expanded="false"><img src="~/Content/images/vehicle/icons8-motorcycle.png" alt="icon" title="Vehicles" class="img-fluid"></a>
+                                    </li>
+                                    <li class="">
+                                        <a href="2" data-toggle="tab" aria-expanded="false"><img src="~/Content/images/mobile/smartphone-tablet.png" alt="icon" title="Mobiles" class="img-fluid"></a>
+                                    </li>
+                                    <li class="">
+                                        <a href="3" data-toggle="tab" aria-expanded="false"><img src="~/Content/images/electronics/globe-bulb.png" alt="icon" title="Electonies" class="img-fluid"></a>
+                                    </li>
+                                    <li class="">
+                                        <a href="4" data-toggle="tab" aria-expanded="false"><img src="~/Content/images/real-estate/building.png" alt="icon" title="Real Estate" class="img-fluid"></a>
+                                    </li>
+                                    <li class="">
+                                        <a href="5" data-toggle="tab" aria-expanded="false"><img src="~/Content/images/fashion/trainers.png" alt="icon" title="Fashion" class="img-fluid"></a>
+                                    </li>
+                                    <li class="">
+                                        <a href="6" data-toggle="tab" aria-expanded="false"><img src="~/Content/images/furniture/icon-chair.png" alt="icon" title="Furniture" class="img-fluid"></a>
+                                    </li>
+                                    <li class="">
+                                        <a href="7" data-toggle="tab" aria-expanded="false"><img src="~/Content/images/jobs/icon-briefcase.png" alt="icon" title="Jobs" class="img-fluid"></a>
+                                    </li>
+                                    <li class="">
+                                        <a href="8" data-toggle="tab" aria-expanded="false"><img src="~/Content/images/services/maintenance.png" alt="icon" title="Services" class="img-fluid"></a>
+                                    </li>
+                                    <li class="">
+                                        <a href="9" data-toggle="tab" aria-expanded="false"><img src="~/Content/images/pets/dog.png" alt="icon" title="Pets" class="img-fluid"></a>
+                                    </li>
+                                    <li class="">
+                                        <a href="10" data-toggle="tab" aria-expanded="false"><img src="~/Content/images/education/icon-book.png" alt="icon" title="Education" class="img-fluid"></a>
+                                    </li>
+                                    <li class="">
+                                        <a href="11" data-toggle="tab" aria-expanded="false"><img src="~/Content/images/matrimony/man-woman.png" alt="icon" title="Matrimony" class="img-fluid"></a>
+                                    </li>
+                                    <li class="">
+                                        <a href="12" data-toggle="tab" aria-expanded="false"><img src="~/Content/images/notes/icon-noney.png" alt="icon" title="Notes and Conis" class="img-fluid"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="col-sm-7 col-xs-12">
+                                <label>Name*</label>
+                                <input name="Name" value="" id="input-name" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-7 col-xs-12">
+                                <label>Phone Number*</label>
+                                <input name="PhoneNumber" value="" id="input-phone" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-7 col-xs-12">
+                                <label>Enter City*</label>
+                                <select class="selectpicker form-control bs-select-hidden" name="City">
+                                    <option value="none">Select City</option>
+                                    <option value="Dhaka">Dhaka</option>
+                                    <option value="Khulna">Khulna</option>
+                                    <option value="Barishal">Barishal</option>
+                                    <option value="Chattogram">Chattogram</option>
+                                    <option value="Sylhet">Sylhet</option>
+                                    <option value="Rajshahi">Rajshahi</option>
+                                    <option value="Cumilla">Cumilla</option>
+                                    <option value="Rangpur">Rangpur</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-7 col-xs-12">
+                                <label>Price*</label>
+                                <input name="Price" value="" id="input-price" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 col-xs-12">
+                                <label>Description*</label>
+                                <span class="pull-right">5000 char Left</span>
+                                <textarea name="Description" id="input-enquiry" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 col-xs-12">
+                                <label>Add Photos*</label>
+                                <div class="photo">
+                                    <input name="CategoryId" value="" id="input-CategoryId" type="hidden">
+                                    <input name="UserId" value="" id="input-UserId" type="hidden">
+                                    
+                                    <input name="City" value="" id="input-City" type="hidden">
+
+                                    <input name="postTime" value="" id="input-datetime" type="hidden">
+
+                                    <ul class="list-inline">
+
+                                        <input id="ImageURL" name="ImageURL" type="hidden" />
+                                        <input id="imageUpload" name="Image" type="file" accept=".png ,.jpg" />
+                                        <img id="categoryImage" style="height: 400px; width: 550px;" />
+
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <input class="btn btn-primary" value="Submit" type="submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ad-single end here -->
+<script>
+    $(document).ready(function () {
+        $('.nav.nav-tabs.list-inline li a').click(function (e) {
+            e.preventDefault();
+            var categoryHref = parseInt($(this).attr('href'));
+
+            console.log('Clicked Category Href (Integer):', categoryHref);
+
+            // Assign the categoryHref value to the hidden input field
+            $('#input-CategoryId').val(categoryHref);
+            function clearCookie(name) {
+                document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            }
+
+            function logout() {
+                clearCookie("user");
+            }
+
+            function getCookie(name) {
+                const cookies = document.cookie.split("; ");
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].split("=");
+                    if (cookie[0] === name) {
+                        return decodeURIComponent(cookie[1]);
+                    }
+                }
+                return null;
+            }
+            const userCookie = getCookie("user");
+            if (userCookie) {
+                $("#logoutalt").show();
+                const user = JSON.parse(userCookie);
+                const userId = user.Id; // Assuming the user object has an "ID" property
+
+                // Assign the userId value to the hidden input field
+                $('#input-UserId').val(userId);
+            }
+
+            const currentTime = new Date().toISOString();
+            $('#input-datetime').val(currentTime);
+
+            $('#input-UserId').val(userId);
+            const selectedCity = $('#selectCity').val();
+            $('#input-City').val(selectedCity);
+
+
+        });
+    });
+
+    $("#imageUpload").change(function () {
+        var element = this;
+
+        var formData = new FormData();
+
+        var totalFiles = element.files.length;
+
+        for (var i = 0; i < totalFiles; i++) {
+            var file = element.files[i];
+            formData.append("Photo", file);
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: '/Shared/UploadImage',
+            dataType: 'json',
+            data: formData,
+            contentType: false,
+            processData: false
+        })
+            .done(function (response) {
+                console.log(response);
+
+                if (response.Success) {
+                    $("#ImageURL").val(response.ImageURL);
+                    $("#categoryImage").attr("src", response.ImageURL);
+                    
+                }
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("FAIL");
+            });
+    });
+
+</script>
