@@ -23,7 +23,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Dashboard Messages</title>
     <!-- Bootstrap stylesheet -->
-    <link href="bootstrap4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/bootstrap4/css/bootstrap.min.css" rel="stylesheet">
     <!-- font -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900" rel="stylesheet">
     <!-- stylesheet -->
@@ -40,7 +40,7 @@
     <link href="~/Content/js/owl-carousel/owl.carousel.min.css" rel="stylesheet" type="text/css" />
     <!--bootstrap select-->
     <link href="~/Content/js/dist/css/bootstrap-select.css" rel="stylesheet" type="text/css" />
-    <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="~/Content/js/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
@@ -76,27 +76,45 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="inner-message">
-                            <div class="row">
-                                <div class="col-sm-3 col-xs-12">
-                                    <div class="left">
-                                        <h2>Reports</h2>
-                                        <ul class="nav">
-                                            @foreach (var item in Model)
-                                            {
-                                                <li>
-                                                    <h5 onclick="toggleText('@item.Id')" style="cursor: pointer;"> @item.ReportByName  <span><i class="fa fa-circle color"></i></span></h5>
-                                                    
-                                                    <p>@item.ReportForName <span>@item.ReportDate</span></p>
-                                                    <textarea id="@item.Id" class="form-control" style="display: none;" readonly rows="4" cols="50">@item.Report</textarea>
-                                                    <button id="btn-@item.Id" type="button" onclick="deleteProduct('@item.ReportId')" style="display: none;"><i class="la la-trash-o"></i></button>
-                                                </li>
-                                            }
-                                        </ul>
+                        <div class="inner-setting">
+                            <div class="panel-group" id="accordion">
+                                @foreach (var item in Model)
+                                {
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse-@item.Id">
+                                                <h4 class="panel-title">@item.ReportForName <i class="fa fa-angle-right" aria-hidden="true"></i></h4>
+                                            </a>
+                                        </div>
+                                        <div id="collapse-@item.Id" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-sm-4"></div>
+                                                    <div class="col-sm-4">
+                                                        <form class="form-horizontal" method="post">
+                                                            <div class="form-group">
+                                                                <div class="col-sm-12">
+                                                                    <p>Reported by @item.ReportByName</p>
+                                                                    <i class="la la-clock-o"></i> @item.ReportDate
+                                                                    <textarea id="@item.Id" readonly rows="4" cols="50">@item.Report</textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="buttons">
+                                                                <button id="btn-@item.Id" type="button" onclick="deleteProduct('@item.ReportId')" class="btn btn-primary" style="border:none"><i class="la la-trash-o"></i></button>
+                                                                <button id="btn-@item.Id" type="button" onclick="ViewProduct(@item.ReportForId)" class="btn btn-primary" style="border:none">Take Action</button>
+
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col-sm-4"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                }
                             </div>
                         </div>
+
 
                     </div>
                 </div>
@@ -106,21 +124,25 @@
     <!-- ad-single end here -->
     <!-- jquery -->
     <!-- bootstrap js -->
-    <script src="js/popper.min.js" type="text/javascript"></script>
-    <script src="bootstrap4/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Content/js/popper.min.js" type="text/javascript"></script>
+    <script src="~/Content/bootstrap4/js/bootstrap.min.js" type="text/javascript"></script>
     <!--bootstrap select-->
-    <script src="js/dist/js/bootstrap-select.js"></script>
+    <script src="~/Content/js/dist/js/bootstrap-select.js"></script>
     <!-- owlcarousel js -->
-    <script src="js/holder.min.js" type="text/javascript"></script>
-    <script src="js/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="~/Content/js/holder.min.js" type="text/javascript"></script>
+    <script src="~/Content/js/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
     <!--internal js-->
     <script src="~/Content/js/owlinternal.js"></script>
     <script src="~/Content/js/internal.js"></script>
     <script src="~/Content/js/preetycheble/prettyCheckable.min.js"></script>
-    <link rel="stylesheet" href="~/Content/js/preetycheble/prettyCheckable.css" />
+    <link rel="~/Content/stylesheet" href="~/Content/js/preetycheble/prettyCheckable.css" />
     <script src="js/switcher.js"></script>
 
     <script>
+        function ViewProduct(productId) {
+             // Redirect to the SingleProduct action passing the product ID as a query parameter
+             window.location.href = '@Url.Action("UserProducts", "Admin")?id=' + productId;
+        }
         function toggleText(id) {
             var textarea = document.getElementById(id);
             var button = document.getElementById("btn-" + id);

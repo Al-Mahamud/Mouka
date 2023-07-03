@@ -17,13 +17,13 @@
                             <h4>@Model.Name</h4>
                             <div class="common">
                                 <p class="des"><i class="la la-map-marker"></i> @Model.City</p>
-                                <p class="des1">Create Account : 2 Years ago</p>
+                                
                             </div>
                             <ul class="list-inline">
                                 <li><a href="@Url.Action("Dashboard", "User")"><img src="~/Content/images/dashboard/grid.png" alt="image" title="image" /><p>Dashboard</p></a></li>
                                 <li><a href="@Url.Action("MyProducts", "Product", new {Model.ID})"><img src="~/Content/images/dashboard/card.png" alt="image" title="image" /><p>My Ads</p></a></li>
                                 
-                                <li><a href="dashboard_message.html"><img src="~/Content/images/dashboard/message.png" alt="image" title="image" /><p>Messages</p></a></li>
+                                
                                 <li class="active"><a href=""><img src="~/Content/images/dashboard/setting.png" alt="image" title="image" /><p>Setting</p></a></li>
                             </ul>
                         </div>
@@ -183,11 +183,12 @@
                                     </div>
                                     <div id="collapse6" class="panel-collapse collapse">
                                         <div class="panel-body">
-                                            <form class="form-horizontal" method="post">
+                                            <div class="form-horizontal" method="post">
                                                 <div class="buttons text-center">
-                                                    <input class="btn btn-primary" value="Delete Account" type="submit">
+                                                    <button id="btn-@Model.ID" class="btn btn-primary" onclick="confirmDeleteUser(@Model.ID)">Delete Account</button>
+
                                                 </div>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -202,3 +203,28 @@
     </div>
 </div>
 <!-- ad-single end here -->
+
+<script>
+    function confirmDeleteUser(ID) {
+  var confirmation = confirm("Are you sure you want to delete this user?");
+  if (confirmation) {
+    // Call the Delete User controller or perform the desired action
+    $.ajax({
+      url: '@Url.Action("Delete", "User")',
+      type: 'POST',
+      data: { ID: ID },
+      success: function(result) {
+        // Handle the success response
+        // Refresh the page or perform any other necessary actions
+        alert("User deleted successfully!");
+        window.location.href = "/Home/Index";
+      },
+      error: function(xhr, status, error) {
+        // Handle the error response
+        console.error(error);
+      }
+    });
+  }
+}
+
+</script>

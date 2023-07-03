@@ -59,6 +59,8 @@ namespace Mouka.Web.Controllers
             product.postTime = DateTime.Now;
             productsService.SaveProduct(product);
 
+            TempData["Addpost"] = true;
+
             return RedirectToAction("Index","Home");
         }
 

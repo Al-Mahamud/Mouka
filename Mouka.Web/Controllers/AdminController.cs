@@ -150,11 +150,13 @@ namespace Mouka.Web.Controllers
                 var user2 = userService.GetUser(report.ReportOnUserId);
                 UserAndReportModel model = new UserAndReportModel
                 {
-                    Id=x,
+                    Id = x,
                     ReportByName = user1.Name,
                     ReportForName = user2.Name,
                     Report = report.report,
-                    ReportId = report.ID
+                    ReportId = report.ID,
+                    ReportDate = report.ReportTime,
+                    ReportForId = report.ReportOnUserId
                 };
                 reportsAndModel.Add(model);
                 x++;

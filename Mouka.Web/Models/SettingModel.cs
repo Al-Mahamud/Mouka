@@ -33,5 +33,6 @@ namespace Mouka.Web.Models
 
         [Required(ErrorMessage = "Select City.")]
         public string City { get; set; }
+
     }
 }

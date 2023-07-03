@@ -29,6 +29,8 @@
     }
     #saveButton {
         border: none;
+        background-color:black;
+        margin-left:5px;
         
     }
 
@@ -53,9 +55,10 @@
 
                                     </div>
                                     <input id="ImageURL" name="ImageURL" type="hidden" />
-                                    <input id="imageUpload" name="Image" type="file" accept=".png, .jpg" />
-                                    <label for="imageUpload" class="custom-file-input-label">Upload Image</label>
-                                    <button id="saveButton" type="submit" style="display: none;">Save</button>
+                                    <input id="imageUpload" name="Image" type="file" accept=".png, .jpg" style="display: none;" />
+                                    <label for="imageUpload"><i class="fas fa-upload"></i></label>
+
+                                    <button id="saveButton" class="btn-primary" type="submit" style="display: none; ">Save</button>
                                 </form>
 
 
@@ -76,7 +79,7 @@
                                 <li><a href="@Url.Action("Dashboard", "user")"><img src="~/Content/images/dashboard/grid.png" alt="image" title="image" /><p>Dashboard</p></a></li>
                                 <li><a href="@Url.Action("MyProducts", "Product", new {Model.ID})"><img src="~/Content/images/dashboard/card.png" alt="image" title="image" /><p>My Ads</p></a></li>
                                 
-                                <li><a href="dashboard_message.html"><img src="~/Content/images/dashboard/message.png" alt="image" title="image" /><p>Messages</p></a></li>
+                                
                                 <li><a href="@Url.Action("UserSetting", "User", new {Model.ID})"><img src="~/Content/images/dashboard/setting.png" alt="image" title="image" /><p>Setting</p></a></li>
                             </ul>
                             

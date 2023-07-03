@@ -20,6 +20,7 @@ namespace Mouka.Web.Controllers
 
 
         UserService userService = new UserService();
+        ReportService reportService = new ReportService();
 
         // ...
 
@@ -294,7 +295,12 @@ namespace Mouka.Web.Controllers
         public ActionResult UserSetting(SettingModel user)
         {
             
+            
             var user1= userService.GetUser(user.ID);
+            if (user1 == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (user.Name != null)
             {
                 user1.Name = user.Name;
@@ -332,6 +338,7 @@ namespace Mouka.Web.Controllers
 
             
             userService.UpdateUser(user1);
+            user.ImageURL = user1.ImageURL;
 
             return View(user);
         }
@@ -419,6 +426,51 @@ namespace Mouka.Web.Controllers
         }
 
 
+        //delete
+        [HttpPost]
+        public ActionResult Delete(int ID)
+
+        {
+            var reports = reportService.GetReports();
+            foreach (var report in reports)
+            {
+                if(report.ReportOnUserId== ID)
+                {
+                    reportService.DeleteReport(report.ID);
+                }
+                else if(report.SubmittedUserId== ID)
+                {
+                    reportService.DeleteReport(report.ID);
+                }
+            }
+
+            HttpCookie userCookie = Request.Cookies["user"];
+
+            User currentUser = null; // Initialize with a default value
+
+            if (userCookie != null)
+            {
+                // Clear the "user" cookie
+                var cookie = new HttpCookie("user")
+                {
+                    Expires = DateTime.Now.AddDays(-1),
+                    Path = "/"
+                };
+                Response.Cookies.Add(cookie);
+
+                userService.DeleteUser(ID);
+                return Json(new { success = true });
+
+            }
+            userService.DeleteUser(ID);
+            
+
+            return RedirectToAction("AdminPage", "Admin");
+            
+
+
+            
+        }
 
 
 
