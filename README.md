@@ -8,7 +8,6 @@ Welcome to Mouka, your ultimate destination for classified advertisements online
 - Location-based Search
 - Verified User Profiles.
 - Real-time Notifications.
-- Feedback and Ratings.
 - Seller Reporting System.
 - Localized Experience.
 - 24/7 Customer Support.
