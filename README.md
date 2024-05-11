@@ -11,7 +11,21 @@ Welcome to Mouka, your ultimate destination for classified advertisements online
 - Seller Reporting System.
 - Localized Experience.
 - 24/7 Customer Support.
+  
+## Technology Used
 
+- **ASP.NET MVC**: Used as the primary web development framework for building the project's server-side logic and MVC architecture.
+- **C#**: The primary programming language used in conjunction with ASP.NET MVC for backend development.
+- **Entity Framework**: Leveraged for object-relational mapping (ORM) to interact with the database using .NET objects.
+- **HTML/CSS/JavaScript**: Utilized for frontend development, including structuring web pages, styling elements, and adding interactivity.
+- **Bootstrap**: Employed to create responsive and mobile-friendly user interfaces with pre-designed components and CSS classes.
+- **jQuery**: Used for DOM manipulation and event handling to enhance the user experience on the client-side.
+- **SQL Server**: Employed as the relational database management system (RDBMS) for storing and managing project data (SSMS 2022 Express)..
+- **Visual Studio**: The integrated development environment (IDE) used for coding, debugging, and deploying the ASP.NET MVC application.
+- **Git/GitHub**: Version control system and hosting platform utilized for collaborative development, code management, and project sharing.
+- **NuGet**: Package manager for .NET that facilitated the installation and management of third-party libraries and dependencies.
+
+  
 ## Installation
 
 - Clone the Repository.
