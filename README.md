@@ -4,13 +4,18 @@ Welcome to Mouka, your ultimate destination for classified advertisements online
 
 ## Features
 
-- User-friendly Posting Interface.
-- Location-based Search
-- Verified User Profiles.
-- Real-time Notifications.
-- Seller Reporting System.
-- Localized Experience.
-- 24/7 Customer Support.
+- User-friendly interface for easy browsing and listing.
+- Browse through a variety of classified ads categorized by category and location.
+- Posting functionality for creating and managing ads.
+- Search and filtering options.
+- User authentication and registration system.
+- User profiles with personalized details and listing history.
+- Responsive design for seamless accessibility across devices.
+- Admin dashboard for managing listings and user activity.
+- Listing management tools.
+- Messaging system for communication between buyers and sellers.
+- Reporting and moderation system.
+- Modern minimalist UI.
   
 ## Technology Used
 
